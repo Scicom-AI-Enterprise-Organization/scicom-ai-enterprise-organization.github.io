@@ -119,8 +119,9 @@
             <label for="gpuSelect">GPU Type</label>
             <select id="gpuSelect">
                 <option value="all">All GPUs</option>
-                <option value="h100">H100 SXM (SciTix)</option>
+                <option value="b200">B200 (RunPod)</option>
                 <option value="h200">H200 SXM (RunPod)</option>
+                <option value="h100">H100 SXM (RunPod)</option>
             </select>
         </div>
         <div class="control-group">
@@ -163,23 +164,23 @@
         // Formula: Total Token Throughput / 8 GPUs
         const benchmarkData = {
             // ========== TP4/DP2 Data ==========
-            // H100 SXM - GPT-OSS-120B - TP4/DP2
+            // H100 SXM (RunPod) - GPT-OSS-120B - TP4/DP2
             'h100_gpt-oss-120b_TP4/DP2': [
-                { ctx: 1024, throughputPerGpu: 2887, e2eLatency: 4.95, config: 'TP4/DP2' },
-                { ctx: 2048, throughputPerGpu: 4487, e2eLatency: 6.02, config: 'TP4/DP2' },
-                { ctx: 4096, throughputPerGpu: 11347, e2eLatency: 4.59, config: 'TP4/DP2' },
-                { ctx: 8192, throughputPerGpu: 15772, e2eLatency: 5.79, config: 'TP4/DP2' },
-                { ctx: 15000, throughputPerGpu: 19745, e2eLatency: 9.34, config: 'TP4/DP2' }
+                { ctx: 1024, throughputPerGpu: 4022, e2eLatency: 3.54, config: 'TP4/DP2' },
+                { ctx: 2048, throughputPerGpu: 7149, e2eLatency: 3.74, config: 'TP4/DP2' },
+                { ctx: 4096, throughputPerGpu: 9840, e2eLatency: 5.25, config: 'TP4/DP2' },
+                { ctx: 8192, throughputPerGpu: 12300, e2eLatency: 8.24, config: 'TP4/DP2' },
+                { ctx: 15000, throughputPerGpu: 14135, e2eLatency: 13.01, config: 'TP4/DP2' }
             ],
-            // H100 SXM - Qwen3-32B - TP4/DP2
+            // H100 SXM (RunPod) - Qwen3-32B - TP4/DP2
             'h100_qwen3-32b_TP4/DP2': [
-                { ctx: 1024, throughputPerGpu: 3874, e2eLatency: 3.59, config: 'TP4/DP2' },
-                { ctx: 2048, throughputPerGpu: 6104, e2eLatency: 4.39, config: 'TP4/DP2' },
-                { ctx: 4096, throughputPerGpu: 7452, e2eLatency: 6.97, config: 'TP4/DP2' },
-                { ctx: 8192, throughputPerGpu: 8099, e2eLatency: 12.60, config: 'TP4/DP2' },
-                { ctx: 15000, throughputPerGpu: 7855, e2eLatency: 23.38, config: 'TP4/DP2' }
+                { ctx: 1024, throughputPerGpu: 3760, e2eLatency: 3.52, config: 'TP4/DP2' },
+                { ctx: 2048, throughputPerGpu: 6364, e2eLatency: 4.20, config: 'TP4/DP2' },
+                { ctx: 4096, throughputPerGpu: 7729, e2eLatency: 6.71, config: 'TP4/DP2' },
+                { ctx: 8192, throughputPerGpu: 7693, e2eLatency: 13.15, config: 'TP4/DP2' },
+                { ctx: 15000, throughputPerGpu: 7684, e2eLatency: 24.06, config: 'TP4/DP2' }
             ],
-            // H200 SXM - GPT-OSS-120B - TP4/DP2
+            // H200 SXM (RunPod) - GPT-OSS-120B - TP4/DP2
             'h200_gpt-oss-120b_TP4/DP2': [
                 { ctx: 1024, throughputPerGpu: 4330, e2eLatency: 3.29, config: 'TP4/DP2' },
                 { ctx: 2048, throughputPerGpu: 7740, e2eLatency: 3.46, config: 'TP4/DP2' },
@@ -187,7 +188,7 @@
                 { ctx: 8192, throughputPerGpu: 13115, e2eLatency: 7.71, config: 'TP4/DP2' },
                 { ctx: 15000, throughputPerGpu: 14365, e2eLatency: 12.78, config: 'TP4/DP2' }
             ],
-            // H200 SXM - Qwen3-32B - TP4/DP2
+            // H200 SXM (RunPod) - Qwen3-32B - TP4/DP2
             'h200_qwen3-32b_TP4/DP2': [
                 { ctx: 1024, throughputPerGpu: 4687, e2eLatency: 3.02, config: 'TP4/DP2' },
                 { ctx: 2048, throughputPerGpu: 6637, e2eLatency: 4.05, config: 'TP4/DP2' },
@@ -197,23 +198,23 @@
             ],
             
             // ========== TP8/DP1 Data ==========
-            // H100 SXM - GPT-OSS-120B - TP8/DP1
+            // H100 SXM (RunPod) - GPT-OSS-120B - TP8/DP1
             'h100_gpt-oss-120b_TP8/DP1': [
-                { ctx: 1024, throughputPerGpu: 2172, e2eLatency: 6.59, config: 'TP8/DP1' },
-                { ctx: 2048, throughputPerGpu: 9756, e2eLatency: 2.74, config: 'TP8/DP1' },
-                { ctx: 4096, throughputPerGpu: 9750, e2eLatency: 5.34, config: 'TP8/DP1' },
-                { ctx: 8192, throughputPerGpu: 17469, e2eLatency: 5.79, config: 'TP8/DP1' },
-                { ctx: 15000, throughputPerGpu: 22600, e2eLatency: 8.07, config: 'TP8/DP1' }
+                { ctx: 1024, throughputPerGpu: 3809, e2eLatency: 3.70, config: 'TP8/DP1' },
+                { ctx: 2048, throughputPerGpu: 8344, e2eLatency: 3.18, config: 'TP8/DP1' },
+                { ctx: 4096, throughputPerGpu: 11653, e2eLatency: 4.39, config: 'TP8/DP1' },
+                { ctx: 8192, throughputPerGpu: 14554, e2eLatency: 6.87, config: 'TP8/DP1' },
+                { ctx: 15000, throughputPerGpu: 17243, e2eLatency: 10.47, config: 'TP8/DP1' }
             ],
-            // H100 SXM - Qwen3-32B - TP8/DP1
+            // H100 SXM (RunPod) - Qwen3-32B - TP8/DP1
             'h100_qwen3-32b_TP8/DP1': [
-                { ctx: 1024, throughputPerGpu: 4097, e2eLatency: 3.46, config: 'TP8/DP1' },
-                { ctx: 2048, throughputPerGpu: 7327, e2eLatency: 3.65, config: 'TP8/DP1' },
-                { ctx: 4096, throughputPerGpu: 8653, e2eLatency: 5.98, config: 'TP8/DP1' },
-                { ctx: 8192, throughputPerGpu: 8784, e2eLatency: 11.56, config: 'TP8/DP1' },
-                { ctx: 15000, throughputPerGpu: 7837, e2eLatency: 23.57, config: 'TP8/DP1' }
+                { ctx: 1024, throughputPerGpu: 4174, e2eLatency: 3.40, config: 'TP8/DP1' },
+                { ctx: 2048, throughputPerGpu: 7522, e2eLatency: 3.56, config: 'TP8/DP1' },
+                { ctx: 4096, throughputPerGpu: 8628, e2eLatency: 6.00, config: 'TP8/DP1' },
+                { ctx: 8192, throughputPerGpu: 9013, e2eLatency: 11.27, config: 'TP8/DP1' },
+                { ctx: 15000, throughputPerGpu: 9218, e2eLatency: 19.95, config: 'TP8/DP1' }
             ],
-            // H200 SXM - GPT-OSS-120B - TP8/DP1
+            // H200 SXM (RunPod) - GPT-OSS-120B - TP8/DP1
             'h200_gpt-oss-120b_TP8/DP1': [
                 { ctx: 1024, throughputPerGpu: 4114, e2eLatency: 3.43, config: 'TP8/DP1' },
                 { ctx: 2048, throughputPerGpu: 8981, e2eLatency: 2.95, config: 'TP8/DP1' },
@@ -221,13 +222,39 @@
                 { ctx: 8192, throughputPerGpu: 15755, e2eLatency: 6.33, config: 'TP8/DP1' },
                 { ctx: 15000, throughputPerGpu: 18640, e2eLatency: 9.69, config: 'TP8/DP1' }
             ],
-            // H200 SXM - Qwen3-32B - TP8/DP1
+            // H200 SXM (RunPod) - Qwen3-32B - TP8/DP1
             'h200_qwen3-32b_TP8/DP1': [
                 { ctx: 1024, throughputPerGpu: 4408, e2eLatency: 3.22, config: 'TP8/DP1' },
                 { ctx: 2048, throughputPerGpu: 8086, e2eLatency: 3.31, config: 'TP8/DP1' },
                 { ctx: 4096, throughputPerGpu: 9186, e2eLatency: 5.64, config: 'TP8/DP1' },
                 { ctx: 8192, throughputPerGpu: 9445, e2eLatency: 10.78, config: 'TP8/DP1' },
                 { ctx: 15000, throughputPerGpu: 9518, e2eLatency: 19.38, config: 'TP8/DP1' }
+            ],
+            
+            // ========== B200 Data ==========
+            // B200 (RunPod) - GPT-OSS-120B - TP8/DP1
+            'b200_gpt-oss-120b_TP8/DP1': [
+                { ctx: 1024, throughputPerGpu: 5135, e2eLatency: 2.75, config: 'TP8/DP1' },
+                { ctx: 2048, throughputPerGpu: 9969, e2eLatency: 2.66, config: 'TP8/DP1' },
+                { ctx: 4096, throughputPerGpu: 14326, e2eLatency: 3.56, config: 'TP8/DP1' },
+                { ctx: 8192, throughputPerGpu: 18261, e2eLatency: 5.46, config: 'TP8/DP1' },
+                { ctx: 15000, throughputPerGpu: 22036, e2eLatency: 8.19, config: 'TP8/DP1' }
+            ],
+            // B200 (RunPod) - Qwen3-32B - TP4/DP2
+            'b200_qwen3-32b_TP4/DP2': [
+                { ctx: 1024, throughputPerGpu: 5839, e2eLatency: 2.26, config: 'TP4/DP2' },
+                { ctx: 2048, throughputPerGpu: 9848, e2eLatency: 2.72, config: 'TP4/DP2' },
+                { ctx: 4096, throughputPerGpu: 13957, e2eLatency: 3.71, config: 'TP4/DP2' },
+                { ctx: 8192, throughputPerGpu: 15544, e2eLatency: 6.51, config: 'TP4/DP2' },
+                { ctx: 15000, throughputPerGpu: 14878, e2eLatency: 12.39, config: 'TP4/DP2' }
+            ],
+            // B200 (RunPod) - Qwen3-32B - TP8/DP1
+            'b200_qwen3-32b_TP8/DP1': [
+                { ctx: 1024, throughputPerGpu: 6039, e2eLatency: 2.34, config: 'TP8/DP1' },
+                { ctx: 2048, throughputPerGpu: 10977, e2eLatency: 2.43, config: 'TP8/DP1' },
+                { ctx: 4096, throughputPerGpu: 13230, e2eLatency: 3.89, config: 'TP8/DP1' },
+                { ctx: 8192, throughputPerGpu: 14755, e2eLatency: 6.84, config: 'TP8/DP1' },
+                { ctx: 15000, throughputPerGpu: 15830, e2eLatency: 11.54, config: 'TP8/DP1' }
             ]
         };
 
@@ -238,11 +265,14 @@
             'h100_qwen3-32b_TP4/DP2': '#16a34a',
             'h200_gpt-oss-120b_TP4/DP2': '#dc2626',
             'h200_qwen3-32b_TP4/DP2': '#9333ea',
+            'b200_qwen3-32b_TP4/DP2': '#ea580c',
             // TP8/DP1 - lighter/different shades
             'h100_gpt-oss-120b_TP8/DP1': '#60a5fa',
             'h100_qwen3-32b_TP8/DP1': '#4ade80',
             'h200_gpt-oss-120b_TP8/DP1': '#f87171',
-            'h200_qwen3-32b_TP8/DP1': '#c084fc'
+            'h200_qwen3-32b_TP8/DP1': '#c084fc',
+            'b200_gpt-oss-120b_TP8/DP1': '#f97316',
+            'b200_qwen3-32b_TP8/DP1': '#fb923c'
         };
 
         const labels = {
@@ -250,10 +280,13 @@
             'h100_qwen3-32b_TP4/DP2': 'H100 Qwen3-32B (TP4/DP2)',
             'h200_gpt-oss-120b_TP4/DP2': 'H200 GPT-OSS-120B (TP4/DP2)',
             'h200_qwen3-32b_TP4/DP2': 'H200 Qwen3-32B (TP4/DP2)',
+            'b200_qwen3-32b_TP4/DP2': 'B200 Qwen3-32B (TP4/DP2)',
             'h100_gpt-oss-120b_TP8/DP1': 'H100 GPT-OSS-120B (TP8/DP1)',
             'h100_qwen3-32b_TP8/DP1': 'H100 Qwen3-32B (TP8/DP1)',
             'h200_gpt-oss-120b_TP8/DP1': 'H200 GPT-OSS-120B (TP8/DP1)',
-            'h200_qwen3-32b_TP8/DP1': 'H200 Qwen3-32B (TP8/DP1)'
+            'h200_qwen3-32b_TP8/DP1': 'H200 Qwen3-32B (TP8/DP1)',
+            'b200_gpt-oss-120b_TP8/DP1': 'B200 GPT-OSS-120B (TP8/DP1)',
+            'b200_qwen3-32b_TP8/DP1': 'B200 Qwen3-32B (TP8/DP1)'
         };
 
         let chart;
